@@ -147,20 +147,60 @@ int bool_xor(int x, int y)
 
 ## 2.2 Integer Representations
 |C data type|Min|Max|
-|-|-|-|-|
+|-|-|-|
 |char|1000 0000 = -128| 0111 111 = 127|
 |unsigned char|0000 0000 = 0| 1111 1111 = 255|
 |short|-32768|32767|
 |int|-2^(w-1)|2(w-1)|
 
+
 ### 2.2.1 Interal Data Type
 ### 2.2.2 Unsigned Encodings
-Assume we have an integer data type of w bits, [x<sub>w-1</sub> - - - x<sub>0</sub>].
-Binary To Unsigned is for length w :
+Assume we have an integer data type of `w` bits, [x<sub>w-1</sub> - - - x<sub>0</sub>].
 
-   B2U<sub>w</sub>(x) = $$\alpha
+`Binary To Unsigned` for length w :
 
+<img src="https://latex.codecogs.com/gif.latex?B2U_{w}(x)=\sum_{i=0}^{w-1}x_{i}2^{i}"/>
 
-## 2.3 Integer Arithmetic
+### 2.2.3 Two's-Complement Encodings(补充编码)
+
+`Binary To Two's Complement` for length w
+
+<img src="https://latex.codecogs.com/gif.latex?T2U_{w}(x)=-x_{w-1}2^{w-1} + \sum_{i=0}^{w-2}x_{i}2^{i}"/>
+
+We give some conclusion
+ - UMin=0
+ - UMax=2<sup>w</sup>-1
+ - TMin=-2<sup>w-1</sup>
+ - TMax=2<sup>w-1</sup>-1 
+ - |TMin|=|TMax|+1
+ - UMax = 2|TMax|+1
+
+### 2.2.4 Conversions with Signed and Unsigned
+ C has `casting`(显式和隐式的类型转换) int -> unsigned.
+ - U2T = U2B -> B2T
+ - T2U = T2B -> B2U
+
+ ## 2.3 Integer Arithmetic
+ ### 2.3.1 Unsigned Addition
+
+UAdd<sub>w</sub>(u,v) = (u+v) mod 2<sup>w</sup>
+
+sup overflow
+
+### 2.3.2 Two's-Complement Addition
+
+TAdd<sub>w</sub>(u,v) = (u+v) mod 2<sup>w-1</sup>
+
+sup Overflow and sub overflow
+
+### 2.3.X
+ - << arthmatic
+ - \>\> arthmatic
+ - <<< logic
+ - \>>> logic copy the flag bit
+
 ## 2.4 Floating Point
-## 2.5 Summary
+A Floating-point respresentation encodes rational(有理数) numbers of from V = x * 2^y, 0 << |V| << 1.
+
+10.111<sub>2</sub> = 2 + 0 + 1/2 +1/4 + 1/8 = 2*7/8
