@@ -126,6 +126,12 @@ process a and process b can **context switching**
  - files
  - virtual memory
  - processes
+ ### 1.9.3 Little Endian
+values: 0x1234567  小端系统人看起来会有点儿迷惑
+ |0x100|0x101|0x102|0x103|
+ |-|-|-|-|
+ |67|45|23|01|
+
  ### 1.10 Summary
  - Hardware
  - Software
