@@ -42,7 +42,7 @@ hello word
 unix>
 ```
 ### 1.4.1 Hardware Organization of a System
-![Hardwar Organization of a typical system](../../../pictures/figure1-1.jpg)
+![Hardwar Organization of a typical system](https://github.com/zhaotianxiang/csapp/blob/master/pictures/figure1-1.jpg)
 #### buses(总线)
 
 Electrical conduits carray bytes of information back and forth between the components. Buses are typically designed to transfer fixed-sized chuncks of bytes konwn as **words**, such as 32-bits or 64-bits, there we assume a word is size of 4 bytes(32-bits)
@@ -106,7 +106,7 @@ process a and process b can **context switching**
 
  #### 1.7.3 Vitual Memary
  Virtual memory is an abstraction that povides each process with the illusion that it has exclusive(独占的) use of the main memory. Each process has the same uniform view of memory, which is known as virtual address space(虚拟地址空间).
- ![virtual address space](../../../pictures/1-2.jfif)
+ ![virtual address space](https://github.com/zhaotianxiang/csapp/blob/master/pictures/1-2.jfif)
  - **Heap** The code and data areas are followed immediately by the run-time heap.
  the heap expands and contracts(合同,收缩) dynamically at run time as call malloc and free function.
  - **Shared Libraries** code and data for shared libraries such as C standard library and the math library.
