@@ -1,4 +1,5 @@
 #include"print_byte.h"
+#include<string.h>
 
 void test(int val)
 {
@@ -20,5 +21,8 @@ int main()
     show_bytes(valp, 1);
     show_bytes(valp, 2);
     show_bytes(valp, 3);
+
+    char *s = "12ABab";
+    show_bytes((byte_pointer) s, strlen(s)+1);
     return 0;
 }
