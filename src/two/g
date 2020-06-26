@@ -1,0 +1,203 @@
+	.file	"main.c"
+	.section .rdata,"dr"
+LC0:
+	.ascii "%p\11 0x%.2x\0"
+	.text
+	.globl	_show_bytes
+	.def	_show_bytes;	.scl	2;	.type	32;	.endef
+_show_bytes:
+LFB10:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$40, %esp
+	movl	$0, -12(%ebp)
+	jmp	L2
+L3:
+	movl	-12(%ebp), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movzbl	(%eax), %eax
+	movzbl	%al, %eax
+	movl	-12(%ebp), %ecx
+	movl	8(%ebp), %edx
+	addl	%ecx, %edx
+	movl	%eax, 8(%esp)
+	movl	%edx, 4(%esp)
+	movl	$LC0, (%esp)
+	call	_printf
+	addl	$1, -12(%ebp)
+L2:
+	movl	-12(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jl	L3
+	movl	$10, (%esp)
+	call	_putchar
+	nop
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE10:
+	.globl	_show_int
+	.def	_show_int;	.scl	2;	.type	32;	.endef
+_show_int:
+LFB11:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$24, %esp
+	movl	$4, 4(%esp)
+	leal	8(%ebp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	nop
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE11:
+	.globl	_show_float
+	.def	_show_float;	.scl	2;	.type	32;	.endef
+_show_float:
+LFB12:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$24, %esp
+	movl	$4, 4(%esp)
+	leal	8(%ebp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	nop
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE12:
+	.globl	_show_pointer
+	.def	_show_pointer;	.scl	2;	.type	32;	.endef
+_show_pointer:
+LFB13:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$24, %esp
+	movl	$4, 4(%esp)
+	leal	8(%ebp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	nop
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE13:
+	.globl	_test
+	.def	_test;	.scl	2;	.type	32;	.endef
+_test:
+LFB17:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$56, %esp
+	movl	8(%ebp), %eax
+	movl	%eax, -12(%ebp)
+	movl	8(%ebp), %eax
+	movl	%eax, -28(%ebp)
+	fildl	-28(%ebp)
+	fstps	-16(%ebp)
+	leal	8(%ebp), %eax
+	movl	%eax, -20(%ebp)
+	movl	-12(%ebp), %eax
+	movl	%eax, (%esp)
+	call	_show_int
+	flds	-16(%ebp)
+	fstps	(%esp)
+	call	_show_float
+	movl	-20(%ebp), %eax
+	movl	%eax, (%esp)
+	call	_show_pointer
+	nop
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE17:
+	.def	___main;	.scl	2;	.type	32;	.endef
+	.section .rdata,"dr"
+LC2:
+	.ascii "12ABab\0"
+	.text
+	.globl	_main
+	.def	_main;	.scl	2;	.type	32;	.endef
+_main:
+LFB18:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	andl	$-16, %esp
+	subl	$32, %esp
+	call	___main
+	movl	$1, 28(%esp)
+	movl	28(%esp), %eax
+	movl	%eax, (%esp)
+	call	_test
+	movl	$-2023406815, 16(%esp)
+	leal	16(%esp), %eax
+	movl	%eax, 24(%esp)
+	movl	$1, 4(%esp)
+	movl	24(%esp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	movl	$2, 4(%esp)
+	movl	24(%esp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	movl	$3, 4(%esp)
+	movl	24(%esp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	movl	$LC2, 20(%esp)
+	movl	20(%esp), %eax
+	movl	%eax, (%esp)
+	call	_strlen
+	addl	$1, %eax
+	movl	%eax, 4(%esp)
+	movl	20(%esp), %eax
+	movl	%eax, (%esp)
+	call	_show_bytes
+	movl	$0, %eax
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE18:
+	.ident	"GCC: (MinGW.org GCC-6.3.0-1) 6.3.0"
+	.def	_printf;	.scl	2;	.type	32;	.endef
+	.def	_putchar;	.scl	2;	.type	32;	.endef
+	.def	_strlen;	.scl	2;	.type	32;	.endef
